@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+title: Process Simulator
+message: If you use this software, please cite it as below.
+type: software
+authors:
+  - family-names: Maier
+    given-names: Moritz
+    affiliation: Bern University of Applied Sciences (BFH)
+version: 1.0.1
+date-released: '2026-11-14'
+license: Apache-2.0
+doi: 10.5281/zenodo.24219723
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.24219723
+    description: Archived release 1.0.1 on Zenodo
+repository-code: https://github.com/BFH-Process-Digitalization/process-simulator
+url: https://bfh-process-digitalization.github.io/process-simulator/
+abstract: >-
+  A BPMN 2.0 process simulator that runs in the browser, with replicated scenario
+  comparison, common random numbers and a value stream view.
+keywords:
+  - business process simulation
+  - BPMN 2.0
+  - discrete-event simulation
+  - value stream mapping

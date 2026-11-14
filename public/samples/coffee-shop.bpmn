@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?><definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:i18n="http://www.omg.org/spec/BPMN/non-normative/extensions/i18n/1.0" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.w3.org/TR/XPath" id="sid-bffa9999-1eea-4f24-bdd0-2e5073a2a5b7" targetNamespace="http://bpmn.io/schema/bpmn" typeLanguage="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL http://www.omg.org/spec/BPMN/2.0/20100501/BPMN20.xsd" xmlns:psim="https://github.com/BitSparkCode/process-simulator/schema/1">
+   <collaboration id="sid-14d2afe0-03f4-4b13-b880-054977478b5a">
+      <participant id="sid-983F2F34-A803-403D-85A8-1564166459F3" name="Coffee Shop" processRef="sid-193DC4B1-2C63-4AB2-A4C9-02E29139AD61">
+      </participant>
+   </collaboration>
+   <process id="sid-193DC4B1-2C63-4AB2-A4C9-02E29139AD61" isClosed="false" isExecutable="false" name="Coffee Shop" processType="None">
+      <laneSet id="sid-b92fc4c4-1566-44d8-a5b1-d32a4fb5cdb6">
+         <lane id="sid-68CD7FB9-4020-4422-A1EC-D36CBE823EB2" name="Cashier">
+            <flowNodeRef>sid-663F4780-1083-4F08-B591-34F6365181B5</flowNodeRef>
+            <flowNodeRef>sid-E2F3B61D-70C0-427B-A7B1-62C98E8B0BE7</flowNodeRef>
+            <flowNodeRef>sid-B188832E-F9BE-4D18-A8D3-61BFDB4DC825</flowNodeRef>
+            <flowNodeRef>sid-FE71ABC7-0D7F-46B3-8DA4-A764712B63B9</flowNodeRef>
+            <flowNodeRef>sid-DD492E54-B4CF-4550-BD66-FD5204FBCD70</flowNodeRef>
+         </lane>
+         <lane id="sid-8E2DB2D2-D7F8-4F98-A32C-86B21A976B64" name="Barista">
+            <flowNodeRef>sid-20913912-C1DF-483F-8C1E-DCE1236208B8</flowNodeRef>
+            <flowNodeRef>sid-EFBF863E-6F0D-4FA5-BC97-8854C9E73F37</flowNodeRef>
+            <flowNodeRef>sid-74EB87C2-E9A0-4092-A1BC-2A99193059E4</flowNodeRef>
+            <flowNodeRef>sid-E0502F69-1A1E-4570-9F6F-EC1B8BFADB8F</flowNodeRef>
+         </lane>
+      </laneSet>
+      <startEvent id="sid-663F4780-1083-4F08-B591-34F6365181B5" name="Customer arrives">
+         <outgoing>sid-C52A3D51-9141-4D29-BD1B-7C1F3F733C6D</outgoing>
+      </startEvent>
+      <userTask completionQuantity="1" id="sid-E2F3B61D-70C0-427B-A7B1-62C98E8B0BE7" implementation="##WebService" isForCompensation="false" name="Taking Order" startQuantity="1">
+         <incoming>sid-C52A3D51-9141-4D29-BD1B-7C1F3F733C6D</incoming>
+         <outgoing>sid-9CEA4BBE-42FF-4532-A02F-8709E64E6390</outgoing>
+      </userTask>
+      <task completionQuantity="1" id="sid-B188832E-F9BE-4D18-A8D3-61BFDB4DC825" isForCompensation="false" name="Processing Payment" startQuantity="1">
+         <incoming>sid-36A4B108-7CA7-4898-B54A-0A657AFD0BD5</incoming>
+         <outgoing>sid-16CAF006-905A-44C7-AB04-B23149337557</outgoing>
+      </task>
+      <task completionQuantity="1" id="sid-FE71ABC7-0D7F-46B3-8DA4-A764712B63B9" isForCompensation="false" name="Delivering Drink" startQuantity="1">
+         <incoming>sid-16CAF006-905A-44C7-AB04-B23149337557</incoming>
+         <outgoing>sid-A0F4441D-4A20-4632-B462-6AF70B798248</outgoing>
+      </task>
+      <endEvent id="sid-DD492E54-B4CF-4550-BD66-FD5204FBCD70" name="Customer served">
+         <incoming>sid-A0F4441D-4A20-4632-B462-6AF70B798248</incoming>
+      </endEvent>
+      <exclusiveGateway gatewayDirection="Diverging" id="sid-20913912-C1DF-483F-8C1E-DCE1236208B8" name="Special Drink?">
+         <incoming>sid-9CEA4BBE-42FF-4532-A02F-8709E64E6390</incoming>
+         <outgoing>sid-C2AD5B34-D59C-46B1-8E4E-3210F8631A7B</outgoing>
+         <outgoing>sid-EA619A16-788E-4565-AB06-BCC6ECF116D0</outgoing>
+      </exclusiveGateway>
+      <task completionQuantity="1" id="sid-EFBF863E-6F0D-4FA5-BC97-8854C9E73F37" isForCompensation="false" name="Preparing Basic Coffee" startQuantity="1">
+         <incoming>sid-EA619A16-788E-4565-AB06-BCC6ECF116D0</incoming>
+         <outgoing>sid-83E34EF8-6DC2-4088-8950-B2D8A03AC4C9</outgoing>
+      </task>
+      <task completionQuantity="1" id="sid-74EB87C2-E9A0-4092-A1BC-2A99193059E4" isForCompensation="false" name="Preparing Special Coffee" startQuantity="1">
+         <incoming>sid-C2AD5B34-D59C-46B1-8E4E-3210F8631A7B</incoming>
+         <outgoing>sid-6BCBECB0-5422-41FF-B07C-A434FD0BB9E2</outgoing>
+      </task>
+      <exclusiveGateway gatewayDirection="Converging" id="sid-E0502F69-1A1E-4570-9F6F-EC1B8BFADB8F" name="">
+         <incoming>sid-6BCBECB0-5422-41FF-B07C-A434FD0BB9E2</incoming>
+         <incoming>sid-83E34EF8-6DC2-4088-8950-B2D8A03AC4C9</incoming>
+         <outgoing>sid-36A4B108-7CA7-4898-B54A-0A657AFD0BD5</outgoing>
+      </exclusiveGateway>
+      <sequenceFlow id="sid-C52A3D51-9141-4D29-BD1B-7C1F3F733C6D" name="" sourceRef="sid-663F4780-1083-4F08-B591-34F6365181B5" targetRef="sid-E2F3B61D-70C0-427B-A7B1-62C98E8B0BE7">
+      </sequenceFlow>
+      <sequenceFlow id="sid-C2AD5B34-D59C-46B1-8E4E-3210F8631A7B" name="Yes" sourceRef="sid-20913912-C1DF-483F-8C1E-DCE1236208B8" targetRef="sid-74EB87C2-E9A0-4092-A1BC-2A99193059E4">
+      </sequenceFlow>
+      <sequenceFlow id="sid-EA619A16-788E-4565-AB06-BCC6ECF116D0" name="No" sourceRef="sid-20913912-C1DF-483F-8C1E-DCE1236208B8" targetRef="sid-EFBF863E-6F0D-4FA5-BC97-8854C9E73F37">
+      </sequenceFlow>
+      <sequenceFlow id="sid-6BCBECB0-5422-41FF-B07C-A434FD0BB9E2" name="" sourceRef="sid-74EB87C2-E9A0-4092-A1BC-2A99193059E4" targetRef="sid-E0502F69-1A1E-4570-9F6F-EC1B8BFADB8F">
+      </sequenceFlow>
+      <sequenceFlow id="sid-83E34EF8-6DC2-4088-8950-B2D8A03AC4C9" name="" sourceRef="sid-EFBF863E-6F0D-4FA5-BC97-8854C9E73F37" targetRef="sid-E0502F69-1A1E-4570-9F6F-EC1B8BFADB8F">
+      </sequenceFlow>
+      <sequenceFlow id="sid-A0F4441D-4A20-4632-B462-6AF70B798248" name="" sourceRef="sid-FE71ABC7-0D7F-46B3-8DA4-A764712B63B9" targetRef="sid-DD492E54-B4CF-4550-BD66-FD5204FBCD70">
+      </sequenceFlow>
+      <sequenceFlow id="sid-36A4B108-7CA7-4898-B54A-0A657AFD0BD5" name="" sourceRef="sid-E0502F69-1A1E-4570-9F6F-EC1B8BFADB8F" targetRef="sid-B188832E-F9BE-4D18-A8D3-61BFDB4DC825">
+      </sequenceFlow>
+      <sequenceFlow id="sid-16CAF006-905A-44C7-AB04-B23149337557" name="" sourceRef="sid-B188832E-F9BE-4D18-A8D3-61BFDB4DC825" targetRef="sid-FE71ABC7-0D7F-46B3-8DA4-A764712B63B9">
+      </sequenceFlow>
+      <sequenceFlow id="sid-9CEA4BBE-42FF-4532-A02F-8709E64E6390" name="" sourceRef="sid-E2F3B61D-70C0-427B-A7B1-62C98E8B0BE7" targetRef="sid-20913912-C1DF-483F-8C1E-DCE1236208B8">
+      </sequenceFlow>
+   </process>
+   <bpmndi:BPMNDiagram id="sid-27e79465-8e0d-438a-a965-13dcbaaf46ab">
+      <bpmndi:BPMNPlane bpmnElement="sid-14d2afe0-03f4-4b13-b880-054977478b5a" id="sid-d9a52168-2a0f-4e9a-8a90-16a399ffe44b">
+         <bpmndi:BPMNShape bpmnElement="sid-983F2F34-A803-403D-85A8-1564166459F3" id="sid-983F2F34-A803-403D-85A8-1564166459F3_gui" isHorizontal="true">
+            <omgdc:Bounds height="476.0" width="863.0" x="310.0" y="160.0"/>
+            <bpmndi:BPMNLabel labelStyle="sid-b5e9d357-8af9-45dd-a76f-a3ecd96ce5da">
+               <omgdc:Bounds height="67.11428833007812" width="12.0" x="315.0" y="364.44285583496094"/>
+            </bpmndi:BPMNLabel>
+         </bpmndi:BPMNShape>
+         <bpmndi:BPMNShape bpmnElement="sid-68CD7FB9-4020-4422-A1EC-D36CBE823EB2" id="sid-68CD7FB9-4020-4422-A1EC-D36CBE823EB2_gui" isHorizontal="true">
+            <omgdc:Bounds height="226.0" width="833.0" x="340.0" y="410.0"/>
+            <bpmndi:BPMNLabel labelStyle="sid-b5e9d357-8af9-45dd-a76f-a3ecd96ce5da">
+               <omgdc:Bounds height="40.11428451538086" width="12.0" x="346.0" y="502.94285774230957"/>
+            </bpmndi:BPMNLabel>
+         </bpmndi:BPMNShape>
+         <bpmndi:BPMNShape bpmnElement="sid-8E2DB2D2-D7F8-4F98-A32C-86B21A976B64" id="sid-8E2DB2D2-D7F8-4F98-A32C-86B21A976B64_gui" isHorizontal="true">
+            <omgdc:Bounds height="250.0" width="833.0" x="340.0" y="160.0"/>
+            <bpmndi:BPMNLabel labelStyle="sid-b5e9d357-8af9-45dd-a76f-a3ecd96ce5da">
+               <omgdc:Bounds height="37.79999923706055" width="12.0" x="346.0" y="266.1000003814697"/>
+            </bpmndi:BPMNLabel>
+         </bpmndi:BPMNShape>
+         <bpmndi:BPMNShape bpmnElement="sid-663F4780-1083-4F08-B591-34F6365181B5" id="sid-663F4780-1083-4F08-B591-34F6365181B5_gui">
+            <omgdc:Bounds height="30.0" width="30.0" x="405.0" y="520.0"/>
+            <bpmndi:BPMNLabel labelStyle="sid-45df603c-4774-4d3b-9a44-5dcd0a257144">
+               <omgdc:Bounds height="11.0" width="85.56428527832031" x="377.21785736083984" y="552.0"/>
+            </bpmndi:BPMNLabel>
+         </bpmndi:BPMNShape>
+         <bpmndi:BPMNShape bpmnElement="sid-E2F3B61D-70C0-427B-A7B1-62C98E8B0BE7" id="sid-E2F3B61D-70C0-427B-A7B1-62C98E8B0BE7_gui">
+            <omgdc:Bounds height="80.0" width="100.0" x="480.0" y="495.0"/>
+            <bpmndi:BPMNLabel labelStyle="sid-b5e9d357-8af9-45dd-a76f-a3ecd96ce5da">
+               <omgdc:Bounds height="12.0" width="70.19999694824219" x="494.9000015258789" y="527.0"/>
+            </bpmndi:BPMNLabel>
+         </bpmndi:BPMNShape>
+         <bpmndi:BPMNShape bpmnElement="sid-B188832E-F9BE-4D18-A8D3-61BFDB4DC825" id="sid-B188832E-F9BE-4D18-A8D3-61BFDB4DC825_gui">
+            <omgdc:Bounds height="80.0" width="100.0" x="810.0" y="495.0"/>
+            <bpmndi:BPMNLabel labelStyle="sid-b5e9d357-8af9-45dd-a76f-a3ecd96ce5da">
+               <omgdc:Bounds height="24.0" width="57.857147216796875" x="831.0714263916016" y="521.0"/>
+            </bpmndi:BPMNLabel>
+         </bpmndi:BPMNShape>
+         <bpmndi:BPMNShape bpmnElement="sid-FE71ABC7-0D7F-46B3-8DA4-A764712B63B9" id="sid-FE71ABC7-0D7F-46B3-8DA4-A764712B63B9_gui">
+            <omgdc:Bounds height="80.0" width="100.0" x="955.0" y="495.0"/>
+            <bpmndi:BPMNLabel labelStyle="sid-b5e9d357-8af9-45dd-a76f-a3ecd96ce5da">
+               <omgdc:Bounds height="12.0" width="84.85714721679688" x="962.5714263916016" y="527.0"/>
+            </bpmndi:BPMNLabel>
+         </bpmndi:BPMNShape>
+         <bpmndi:BPMNShape bpmnElement="sid-DD492E54-B4CF-4550-BD66-FD5204FBCD70" id="sid-DD492E54-B4CF-4550-BD66-FD5204FBCD70_gui">
+            <omgdc:Bounds height="28.0" width="28.0" x="1100.0" y="521.0"/>
+            <bpmndi:BPMNLabel labelStyle="sid-45df603c-4774-4d3b-9a44-5dcd0a257144">
+               <omgdc:Bounds height="11.0" width="85.56428527832031" x="1071.2178573608398" y="551.0"/>
+            </bpmndi:BPMNLabel>
+         </bpmndi:BPMNShape>
+         <bpmndi:BPMNShape bpmnElement="sid-20913912-C1DF-483F-8C1E-DCE1236208B8" id="sid-20913912-C1DF-483F-8C1E-DCE1236208B8_gui" isMarkerVisible="true">
+            <omgdc:Bounds height="40.0" width="40.0" x="580.0" y="265.0"/>
+            <bpmndi:BPMNLabel labelStyle="sid-45df603c-4774-4d3b-9a44-5dcd0a257144">
+               <omgdc:Bounds height="12.0" width="75.5999984741211" x="610.5" y="295.5"/>
+            </bpmndi:BPMNLabel>
+         </bpmndi:BPMNShape>
+         <bpmndi:BPMNShape bpmnElement="sid-EFBF863E-6F0D-4FA5-BC97-8854C9E73F37" id="sid-EFBF863E-6F0D-4FA5-BC97-8854C9E73F37_gui">
+            <omgdc:Bounds height="80.0" width="100.0" x="665.0" y="190.0"/>
+            <bpmndi:BPMNLabel labelStyle="sid-b5e9d357-8af9-45dd-a76f-a3ecd96ce5da">
+               <omgdc:Bounds height="24.0" width="82.5428466796875" x="673.7285766601562" y="216.0"/>
+            </bpmndi:BPMNLabel>
+         </bpmndi:BPMNShape>
+         <bpmndi:BPMNShape bpmnElement="sid-74EB87C2-E9A0-4092-A1BC-2A99193059E4" id="sid-74EB87C2-E9A0-4092-A1BC-2A99193059E4_gui">
+            <omgdc:Bounds height="80.0" width="100.0" x="665.0" y="315.0"/>
+            <bpmndi:BPMNLabel labelStyle="sid-b5e9d357-8af9-45dd-a76f-a3ecd96ce5da">
+               <omgdc:Bounds height="24.0" width="91.80000305175781" x="669.0999984741211" y="341.0"/>
+            </bpmndi:BPMNLabel>
+         </bpmndi:BPMNShape>
+         <bpmndi:BPMNShape bpmnElement="sid-E0502F69-1A1E-4570-9F6F-EC1B8BFADB8F" id="sid-E0502F69-1A1E-4570-9F6F-EC1B8BFADB8F_gui" isMarkerVisible="true">
+            <omgdc:Bounds height="40.0" width="40.0" x="790.0" y="265.0"/>
+         </bpmndi:BPMNShape>
+         <bpmndi:BPMNEdge bpmnElement="sid-C52A3D51-9141-4D29-BD1B-7C1F3F733C6D" id="sid-C52A3D51-9141-4D29-BD1B-7C1F3F733C6D_gui">
+            <omgdi:waypoint x="435.0" y="535.0"/>
+            <omgdi:waypoint x="480.0" y="535.0"/>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-C2AD5B34-D59C-46B1-8E4E-3210F8631A7B" id="sid-C2AD5B34-D59C-46B1-8E4E-3210F8631A7B_gui">
+            <omgdi:waypoint x="600.5" y="305.0"/>
+            <omgdi:waypoint x="600.5" y="355.0"/>
+            <omgdi:waypoint x="665.0" y="355.0"/>
+            <bpmndi:BPMNLabel labelStyle="sid-45df603c-4774-4d3b-9a44-5dcd0a257144">
+               <omgdc:Bounds height="19.28570556640625" width="12.0" x="580.5" y="313.0"/>
+            </bpmndi:BPMNLabel>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-EA619A16-788E-4565-AB06-BCC6ECF116D0" id="sid-EA619A16-788E-4565-AB06-BCC6ECF116D0_gui">
+            <omgdi:waypoint x="600.5" y="265.0"/>
+            <omgdi:waypoint x="600.5" y="230.0"/>
+            <omgdi:waypoint x="665.0" y="230.0"/>
+            <bpmndi:BPMNLabel labelStyle="sid-45df603c-4774-4d3b-9a44-5dcd0a257144">
+               <omgdc:Bounds height="14.65716552734375" width="12.0" x="580.5" y="242.34283447265625"/>
+            </bpmndi:BPMNLabel>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-6BCBECB0-5422-41FF-B07C-A434FD0BB9E2" id="sid-6BCBECB0-5422-41FF-B07C-A434FD0BB9E2_gui">
+            <omgdi:waypoint x="765.0" y="355.0"/>
+            <omgdi:waypoint x="810.5" y="355.0"/>
+            <omgdi:waypoint x="810.5" y="305.0"/>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-83E34EF8-6DC2-4088-8950-B2D8A03AC4C9" id="sid-83E34EF8-6DC2-4088-8950-B2D8A03AC4C9_gui">
+            <omgdi:waypoint x="765.0" y="230.0"/>
+            <omgdi:waypoint x="810.5" y="230.0"/>
+            <omgdi:waypoint x="810.5" y="265.0"/>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-A0F4441D-4A20-4632-B462-6AF70B798248" id="sid-A0F4441D-4A20-4632-B462-6AF70B798248_gui">
+            <omgdi:waypoint x="1055.0" y="535.0"/>
+            <omgdi:waypoint x="1100.0" y="535.0"/>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-36A4B108-7CA7-4898-B54A-0A657AFD0BD5" id="sid-36A4B108-7CA7-4898-B54A-0A657AFD0BD5_gui">
+            <omgdi:waypoint x="830.0" y="285.5"/>
+            <omgdi:waypoint x="860.0" y="285.5"/>
+            <omgdi:waypoint x="860.0" y="495.0"/>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-16CAF006-905A-44C7-AB04-B23149337557" id="sid-16CAF006-905A-44C7-AB04-B23149337557_gui">
+            <omgdi:waypoint x="910.0" y="535.0"/>
+            <omgdi:waypoint x="955.0" y="535.0"/>
+         </bpmndi:BPMNEdge>
+         <bpmndi:BPMNEdge bpmnElement="sid-9CEA4BBE-42FF-4532-A02F-8709E64E6390" id="sid-9CEA4BBE-42FF-4532-A02F-8709E64E6390_gui">
+            <omgdi:waypoint x="530.0" y="495.0"/>
+            <omgdi:waypoint x="530.0" y="285.5"/>
+            <omgdi:waypoint x="580.0" y="285.5"/>
+         </bpmndi:BPMNEdge>
+      </bpmndi:BPMNPlane>
+      <bpmndi:BPMNLabelStyle id="sid-45df603c-4774-4d3b-9a44-5dcd0a257144">
+         <omgdc:Font isBold="false" isItalic="false" isStrikeThrough="false" isUnderline="false" name="Arial" size="11.0"/>
+      </bpmndi:BPMNLabelStyle>
+      <bpmndi:BPMNLabelStyle id="sid-b5e9d357-8af9-45dd-a76f-a3ecd96ce5da">
+         <omgdc:Font isBold="false" isItalic="false" isStrikeThrough="false" isUnderline="false" name="Arial" size="12.0"/>
+      </bpmndi:BPMNLabelStyle>
+   </bpmndi:BPMNDiagram>
+  <psim:project><![CDATA[{"baseline":{"id":"baseline","name":"Baseline","cases":200,"arrival":{"type":"exponential","mean":300,"unit":"minutes"},"startDate":"2026-11-16T08:00:00.000Z","currency":"CHF","resources":[{"id":"res_cashier","name":"Cashier","count":1,"costPerHour":30,"timetableId":"always"},{"id":"res_barista","name":"Barista","count":1,"costPerHour":30,"timetableId":"always"}],"timetables":[{"id":"always","name":"Around the clock (24/7)","rules":[{"fromDay":0,"toDay":6,"from":"00:00","to":"24:00"}]},{"id":"office","name":"Office hours (Mon-Fri 9-17)","rules":[{"fromDay":0,"toDay":4,"from":"09:00","to":"17:00"}]}],"elements":{"sid-E2F3B61D-70C0-427B-A7B1-62C98E8B0BE7":{"duration":{"type":"normal","mean":120,"sd":30,"unit":"minutes"},"resourceId":"res_cashier","maxQueue":5,"value":"bva"},"sid-B188832E-F9BE-4D18-A8D3-61BFDB4DC825":{"duration":{"type":"fixed","mean":60,"unit":"minutes"},"resourceId":"res_cashier","value":"bva"},"sid-FE71ABC7-0D7F-46B3-8DA4-A764712B63B9":{"duration":{"type":"normal","mean":30,"sd":10,"unit":"seconds"},"resourceId":"res_cashier","value":"nva"},"sid-EFBF863E-6F0D-4FA5-BC97-8854C9E73F37":{"duration":{"type":"normal","mean":180,"sd":60,"unit":"minutes"},"resourceId":"res_barista","revenue":4,"value":"va"},"sid-74EB87C2-E9A0-4092-A1BC-2A99193059E4":{"duration":{"type":"normal","mean":300,"sd":120,"unit":"minutes"},"resourceId":"res_barista","revenue":6,"value":"va"}},"flows":{"sid-C2AD5B34-D59C-46B1-8E4E-3210F8631A7B":0.3,"sid-EA619A16-788E-4565-AB06-BCC6ECF116D0":0.7},"trim":0,"seed":42,"horizon":28800},"variants":[{"id":"sc_sdryk9","name":"Customers every 3 min","overrides":{"arrival":{"type":"exponential","mean":180,"unit":"minutes"}}},{"id":"sc_r9jx7k","name":"Second barista","overrides":{"resource:res_barista":{"id":"res_barista","name":"Barista","count":2,"costPerHour":30,"timetableId":"always"}}},{"id":"sc_d1gfhe","name":"Product mix 50/50","overrides":{"flow:sid-C2AD5B34-D59C-46B1-8E4E-3210F8631A7B":0.5,"flow:sid-EA619A16-788E-4565-AB06-BCC6ECF116D0":0.5}},{"id":"sc_my3kdq","name":"Every 3 min + second barista","overrides":{"arrival":{"type":"exponential","mean":180,"unit":"minutes"},"resource:res_barista":{"id":"res_barista","name":"Barista","count":2,"costPerHour":30,"timetableId":"always"}}}]}]]></psim:project>
+</definitions>

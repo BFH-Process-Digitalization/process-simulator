@@ -1,0 +1,13 @@
+/* Layout inside the Camunda Modeler canvas. The shared app styles above are scoped to .psim-ui. */
+.psim-ui { position: absolute; inset: 0; pointer-events: none; background: none !important; z-index: 20; }
+.psim-ui .psim-toggle { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); z-index: 1; pointer-events: auto; background: var(--ink); color: #fff; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); }
+.psim-ui .psim-toggle.open { left: calc(50% - 190px); background: var(--panel); color: var(--ink); border-color: var(--line); }
+.psim-ui .psim-layout { position: absolute; inset: 0; display: grid; grid-template-columns: 1fr 380px; }
+.psim-ui .psim-main { display: flex; flex-direction: column; min-height: 0; min-width: 0; }
+.psim-ui .psim-main > * { pointer-events: auto; }
+.psim-ui .psim-main > .psim-spacer { flex: 1; pointer-events: none; }
+.psim-ui .scenarios { border-top: 1px solid var(--line); }
+.psim-ui .side { pointer-events: auto; overflow-y: auto; box-shadow: -2px 0 6px rgba(0, 0, 0, 0.04); }
+.psim-ui .side { display: flex; flex-direction: column; }
+.psim-ui .side > .inspector, .psim-ui .side > .hint { flex: 1 0 auto; }
+.psim-ui .side > .about-bar { position: sticky; bottom: 0; }

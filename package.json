@@ -1,0 +1,48 @@
+{
+  "name": "process-simulator",
+  "private": true,
+  "version": "1.0.1",
+  "description": "BPMN 2.0 process simulator in the browser",
+  "author": "Prof. Moritz Maier, Bern University of Applied Sciences (BFH)",
+  "license": "Apache-2.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "typecheck": "tsc -b",
+    "build:plugin": "vite build --config camunda-plugin/vite.config.ts",
+    "notices": "node scripts/third-party-notices.mjs",
+    "build:cli": "node scripts/build-cli.mjs",
+    "procsim": "node dist-cli/procsim.mjs"
+  },
+  "dependencies": {
+    "@xmldom/xmldom": "^0.9.12",
+    "bpmn-js": "^18.31.1",
+    "bpmn-moddle": "^9.0.4",
+    "fflate": "^0.8.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.13.0",
+    "@types/node": "^26.6.6",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.3",
+    "esbuild": "^0.21.5",
+    "eslint": "^9.13.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.14",
+    "globals": "^15.11.0",
+    "typescript": "~5.6.2",
+    "typescript-eslint": "^8.11.0",
+    "vite": "^5.4.10",
+    "vitest": "^2.1.9"
+  },
+  "bin": {
+    "procsim": "dist-cli/procsim.mjs"
+  }
+}
